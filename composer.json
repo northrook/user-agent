@@ -1,0 +1,27 @@
+{
+  "name": "northrook/user-agent",
+  "description": "PHP Browser detection using the user agent.",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Northrook\\Support\\": "/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Martin",
+      "email": "mn@northrook.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.2",
+    "foroco/php-browser-detection": "^2.7"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^7.0",
+    "symfony/error-handler": "^7.0"
+  }
+}
