@@ -1,8 +1,11 @@
 <?php
 
-namespace Northrook\Support;
+declare( strict_types = 1 );
+
+namespace Northrook;
 
 use foroco\BrowserDetection;
+use Northrook\Core\Trait\StaticClass;
 
 /**
  * Northrook UserAgent
@@ -12,6 +15,8 @@ use foroco\BrowserDetection;
  */
 final class UserAgent
 {
+    // use StaticClass;
+
     private static BrowserDetection $browserDetection;
 
     private static array $getAll;
@@ -36,18 +41,12 @@ final class UserAgent
      *
      *
      * @param string|null  $match  Return true if the OS family matches
-     * @param bool         $raw    Return the raw OS family array
      *
-     * @return bool|object|array
+     * @return bool|string
      */
-    public static function OS( ?string $match = null, bool $raw = false ) : bool | object | array {
+    public static function OS( ?string $match = null ) : bool | string {
 
         $os = UserAgent::getOS();
-
-        if ( $raw ) {
-            return $os;
-        }
-
         $osFamily = [
             'apple'   => $os[ 'os_family' ] === 'macintosh',
             'linux'   => $os[ 'os_family' ] === 'linux',
@@ -55,11 +54,7 @@ final class UserAgent
             'android' => $os[ 'os_family' ] === 'android',
         ];
 
-        if ( !$match ) {
-            return (object) $osFamily;
-        }
-
-        return $osFamily[ $match ] ?? false;
+        return $match ? $osFamily[ $match ] ?? false : array_key_first(array_filter( $osFamily ));
     }
 
     /**
