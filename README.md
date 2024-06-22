@@ -30,9 +30,9 @@ $userAgent = UserAgent::detect() : BrowserDetection
 // If no $match is passed, a string with the matched OS family is returned
 $os = UserAgent::OS(); 
 
-$osArray $ UserAgent::getAll();
-$osArray $ UserAgent::getOS();
-$osArray $ UserAgent::getBrowser();
+UserAgent::getAll();
+UserAgent::getOS();
+UserAgent::getBrowser();
 ```
 
 ## License
